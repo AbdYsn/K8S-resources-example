@@ -1,0 +1,17 @@
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetworkNodePolicy
+metadata:
+  name: mlnxnics
+  namespace: sriov-network-operator
+spec:
+  nodeSelector:
+    feature.node.kubernetes.io/network-sriov.capable: "true"
+  resourceName: mlnxnics
+  priority: 99
+  mtu: 9000
+  numVfs: 4
+  eSwitchMode: legacy
+  nicSelector:
+      deviceID: "1017"
+      vendor: "15b3"
+  deviceType: netdevice
